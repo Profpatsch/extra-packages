@@ -1,6 +1,17 @@
 with import <nixpkgs> {};
+
+let hp = haskellPackages.override {
+  overrides = self: super: {
+    reactive-banana-wx = with haskell.lib;
+      addBuildDepends
+        (enableCabalFlag super.reactive-banana-wx "buildexamples")
+        [ super.random super.executable-path ];
+    };
+  };
+
+in
 {
   haskellPackages = {
-    inherit (pkgs.haskellPackages) reactive-banana-wx;
+    inherit (hp) reactive-banana-wx pandoc;
   };
 }
