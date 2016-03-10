@@ -14,4 +14,6 @@ in
   haskellPackages = {
     inherit (hp) reactive-banana-wx pandoc;
   };
+
+  quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
 }
