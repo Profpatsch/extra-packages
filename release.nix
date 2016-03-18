@@ -15,5 +15,7 @@ in
     inherit (hp) reactive-banana-wx pandoc;
   };
 
-  quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
+  # quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
+
+  inherit mkvtoolnix;
 }
