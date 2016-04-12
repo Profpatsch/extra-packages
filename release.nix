@@ -7,7 +7,6 @@ let hp = haskellPackages.override {
         (enableCabalFlag super.reactive-banana-wx "buildexamples")
         [ super.random super.executable-path ];
     };
-    inherit purescript;
   };
 
    hp_lts = haskell.packages.lts-5_9;
@@ -15,7 +14,7 @@ let hp = haskellPackages.override {
 in
 {
   haskellPackages = {
-    inherit (hp) reactive-banana-wx pandoc;
+    inherit (hp) reactive-banana-wx pandoc purescript;
   };
 
   haskellPackages_lts = {
