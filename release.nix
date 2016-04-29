@@ -18,7 +18,7 @@ in
   };
 
   haskellPackages_lts = {
-    inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore;
+    inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore cabal-install stack ghcid;
   };
 
   # quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
