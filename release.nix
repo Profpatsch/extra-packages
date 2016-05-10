@@ -17,9 +17,10 @@ in
     inherit (hp) reactive-banana-wx pandoc purescript;
   };
 
-  haskellPackages_lts = {
-    inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore cabal-install stack ghcid;
-  };
+  haskellPackages_lts =
+    let selection = { inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore cabal-install stack ghcid; };
+    in selection // { hooglePkgs = (hp_lts.ghcWithHoogle (_: lib.mapAttrsToList (_: v: v) selection)); };
+
 
   # quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
 
