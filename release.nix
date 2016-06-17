@@ -18,7 +18,7 @@ in
   };
 
   haskellPackages_lts =
-    let selection = { inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore cabal-install stack ghcid; };
+    let selection = { inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore cabal-install stack ghcid ListZipper tasty tasty-hunit tasty-smallcheck protolude; };
     in selection // { hooglePkgs = (hp_lts.ghcWithHoogle (_: lib.mapAttrsToList (_: v: v) selection)); };
 
 
