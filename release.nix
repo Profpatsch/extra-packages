@@ -22,6 +22,10 @@ in
     in selection // { hooglePkgs = (hp_lts.ghcWithHoogle (_: lib.mapAttrsToList (_: v: v) selection)); };
 
 
+  haskellPackages_ghcjs = {
+    haskell.compiler.ghcjs = haskell.compiler.ghcjs;
+  };
+
   # quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
 
   inherit mkvtoolnix;
