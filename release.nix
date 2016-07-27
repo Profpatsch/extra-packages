@@ -9,17 +9,11 @@ let hp = haskellPackages.override {
     };
   };
 
-   hp_lts = haskell.packages.lts-5_9;
-
 in
 {
   haskellPackages = {
-    inherit (hp) reactive-banana-wx pandoc purescript;
+    inherit (hp) pandoc purescript;
   };
-
-  haskellPackages_lts =
-    let selection = { inherit (hp_lts) cassava HDBC HDBC-odbc wx wxcore cabal-install stack ghcid ghc-mod ListZipper tasty tasty-hunit tasty-smallcheck protolude; };
-    in selection // { hooglePkgs = (hp_lts.ghcWithHoogle (_: lib.mapAttrsToList (_: v: v) selection)); };
 
 
   haskellPackages_ghcjs =
@@ -34,8 +28,6 @@ in
     haskell.compiler.ghcjs = haskell.compiler.ghcjs;
     oldghcjs = { inherit (oldpkgs.haskell.packages.ghcjs) reflex-dom; };
   };
-
-  # quasselDaemonStatic = kde5.quasselDaemon.override { static = true; };
 
   inherit mkvtoolnix;
 }
