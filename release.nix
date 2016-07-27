@@ -17,7 +17,7 @@ in
 
 
   haskellPackages_ghcjs =
-    let oldpkgs = import (nixpkgs.fetchFromGitHub {
+    let oldpkgs = import (fetchFromGitHub {
           owner = "NixOS";
           repo = "nixpkgs";
           # last change of ghcjs
