@@ -34,4 +34,5 @@ in
   };
 
   inherit mkvtoolnix;
+  pyqt5 = pythonPackages.pyqt5;
 }
