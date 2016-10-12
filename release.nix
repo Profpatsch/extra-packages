@@ -15,10 +15,6 @@ in
     inherit (hp) pandoc purescript;
   };
 
-  haskellPackages_710 = {
-    inherit (haskell.packages.ghc7103) frpnow gloss frpnow-gloss;
-  };
-
 
   haskellPackages_ghcjs =
     let oldpkgs = import (fetchFromGitHub {
