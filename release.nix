@@ -1,13 +1,17 @@
-with import <nixpkgs> {};
 
-let hp = haskellPackages.override {
-  overrides = self: super: {
-    reactive-banana-wx = with haskell.lib;
-      addBuildDepends
-        (enableCabalFlag super.reactive-banana-wx "buildexamples")
-        [ super.random super.executable-path ];
+let
+
+  pkgs = import <nixpkgs> {};
+  pkgs-ghcjs = import <nixpkgs-ghcjs> {};
+
+  hp = pkgs.haskellPackages.override {
+    overrides = self: super: {
+      reactive-banana-wx = with pkgs.haskell.lib;
+        addBuildDepends
+          (enableCabalFlag super.reactive-banana-wx "buildexamples")
+          [ super.random super.executable-path ];
+      };
     };
-  };
 
 in
 {
@@ -16,19 +20,11 @@ in
   };
 
 
-  haskellPackages_ghcjs =
-    let oldpkgs = import (fetchFromGitHub {
-          owner = "NixOS";
-          repo = "nixpkgs";
-          # last change of ghcjs
-          rev = "d3754d34824810d80c8e05767f05c85855883a00";
-          sha256 = "1ncqfsb66jw8f8gxahrx3ia4hh9vlhfswzcp2id8sm2jkm5dmyid";
-        }) {};
-   in {
-    haskell.compiler.ghcjs = haskell.compiler.ghcjs;
-    oldghcjs = { inherit (oldpkgs.haskell.packages.ghcjs) reflex-dom; };
+  ghcjsPackages = with pkgs-ghcjs.haskell.packages.ghcjs; {
+    inherit lucid Spock-api-ghcjs ghcjs-dom jsaddle-dom
+      smallcheck tasty-smallcheck tasty-hunit smallcheck-series;
   };
 
-  inherit mkvtoolnix;
-  pyqt5 = pythonPackages.pyqt5;
+  inherit (pkgs) mkvtoolnix;
+  pyqt5 = pkgs.pythonPackages.pyqt5;
 }
