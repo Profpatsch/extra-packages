@@ -16,7 +16,7 @@ let
 in
 {
   haskellPackages = {
-    inherit (hp) pandoc purescript;
+    inherit (hp) pandoc purescript stack cabal-install;
   };
 
 
