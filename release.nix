@@ -23,7 +23,11 @@ in
   };
 
 
-  ghcjsPackages = with pkgs-ghcjs.haskell.packages.ghcjsHEAD; {
+  ghcjsPackages = with pkgs-ghcjs.haskell.packages.ghcjs; {
+    inherit lucid Spock-api-ghcjs ghcjs-dom jsaddle-dom
+      smallcheck tasty-smallcheck tasty-hunit smallcheck-series;
+  };
+  ghcjsHEADPackages = with pkgs-ghcjs.haskell.packages.ghcjsHEAD; {
     inherit lucid Spock-api-ghcjs ghcjs-dom jsaddle-dom
       smallcheck tasty-smallcheck tasty-hunit smallcheck-series;
   };
