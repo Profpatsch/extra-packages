@@ -16,5 +16,5 @@ in
     inherit (pkgs) stack;
   };
 
-  inherit (pkgs) mkvtoolnix;
+  inherit (pkgs) mkvtoolnix purescript psc-package;
 }
