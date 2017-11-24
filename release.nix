@@ -10,11 +10,17 @@ let
     };
   };
 
+  ghcjs = {
+    inherit (pkgs.haskell.packages.ghcjsHEAD) ghcjs-base;
+  };
+
 in
 {
   haskellTools = {
     inherit (pkgs) stack;
   };
+
+  inherit ghcjs;
 
   inherit (pkgs) mkvtoolnix purescript psc-package;
 }
