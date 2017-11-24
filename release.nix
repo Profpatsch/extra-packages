@@ -11,7 +11,8 @@ let
   };
 
   ghcjs = {
-    inherit (pkgs.haskell.packages.ghcjsHEAD) ghcjs-base;
+    inherit (pkgs.haskell.packages.ghcjsHEAD)
+      ghcjs-base dhall;
   };
 
 in
