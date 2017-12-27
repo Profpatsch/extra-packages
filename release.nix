@@ -15,6 +15,13 @@ let
       ghcjs-base dhall;
   };
 
+  # TMP
+  arm =
+      (import <nixpkgs> {
+        localSystem = pkgs.lib.systems.examples.armv7l-hf-multiplatform;
+      }).hello;
+
+
 in
 {
   haskellTools = {
@@ -22,6 +29,8 @@ in
   };
 
   inherit ghcjs;
+
+  inherit arm;
 
   inherit (pkgs) mkvtoolnix purescript psc-package;
 }
